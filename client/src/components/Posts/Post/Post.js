@@ -46,7 +46,7 @@ const Post = ({ post, setCurrentId }) => {
         </Button>
       </div>
       <div className={classes.details}>
-        <Typography variant="body2" color="textSecondary" component="h2">
+        <Typography variant="body2" color="primary" component="h2">
           {post.tags.map((tag) => `#${tag} `)}
         </Typography>
       </div>
@@ -69,7 +69,8 @@ const Post = ({ post, setCurrentId }) => {
           color="primary"
           onClick={() => dispatch(likePost(post._id))}
         >
-          <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
+          <ThumbUpAltIcon fontSize="small" /> &nbsp; Like &nbsp;{" "}
+          {post.likeCount}{" "}
         </Button>
         <Button
           size="small"
