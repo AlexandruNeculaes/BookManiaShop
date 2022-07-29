@@ -15,6 +15,10 @@ app.use(cors());
 
 app.use("/posts", postRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Hi to book API");
+});
+
 const CONNECTION_URL = process.env.DB_URL;
 const PORT = process.env.PORT || 5000;
 
