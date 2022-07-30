@@ -5,6 +5,7 @@ import cors from "cors";
 import { config } from "dotenv";
 
 import postRoutes from "./routes/posts.js";
+import userRoutes from "./routes/users.js";
 
 config();
 const app = express();
@@ -14,10 +15,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.use("/posts", postRoutes);
-
-app.get("/", (req, res) => {
-  res.send("Hi to book API");
-});
+app.use("/user", userRoutes);
 
 const CONNECTION_URL = process.env.DB_URL;
 const PORT = process.env.PORT || 5000;
