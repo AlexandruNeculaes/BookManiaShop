@@ -21,6 +21,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(() => {
+    if (!post?.title) clear();
     if (post) setPostData(post);
   }, [post]);
 
@@ -67,7 +68,7 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {currentId ? `Editing "${post.title}"` : "Creating a Memory"}
+          {currentId ? `Editing "${post.title}"` : "Start book talk"}
         </Typography>
         <TextField
           name="title"
