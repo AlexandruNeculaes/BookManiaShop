@@ -8,11 +8,12 @@ import BookTalk from "../../images/BookTalk.png";
 
 const Navbar = () => {
   const classes = useStyles();
-
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
+
+  console.log(user);
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
@@ -23,8 +24,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const token = user?.token;
-
+    /*const token = user?.token; */
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 
@@ -48,7 +48,7 @@ const Navbar = () => {
             <Avatar
               className={classes.purple}
               alt={user.result.name}
-              stc={user.resut.imageUrl}
+              src={user.result.imageUrl}
             >
               {user.result.name.charAt(0)}
             </Avatar>
@@ -61,7 +61,7 @@ const Navbar = () => {
               color="secondary"
               onClick={logout}
             >
-              Log Out
+              Logout
             </Button>
           </div>
         ) : (
