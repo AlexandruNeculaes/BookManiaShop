@@ -46,7 +46,8 @@ const Navbar = () => {
           alt="icon"
           height="60px"
         />
-
+      </Link>
+      <Link to="/posts" className={classes.brandContainer}>
         <img
           className={classes.image}
           src={BookTalk}

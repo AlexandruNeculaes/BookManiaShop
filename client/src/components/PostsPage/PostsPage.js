@@ -12,43 +12,42 @@ import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import ChipInput from "material-ui-chip-input";
 
-import { getBooksBySearch } from "../../actions/books";
-import Books from "../Books/Books";
-import BookForm from "../BookForm/BookForm";
-import BookPagination from "../BookPagination";
-
+import { getPostsBySearch } from "../../actions/posts";
+import Posts from "../Posts/Posts";
+import Form from "../Form/Form";
+import Pagination from "../Pagination";
 import useStyles from "./styles";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
-const Home = () => {
+const PostsPage = () => {
   const classes = useStyles();
   const query = useQuery();
   const page = query.get("page") || 1;
   const searchQuery = query.get("searchQuery");
 
-  const [bookCurrentId, setBookCurrentId] = useState(0);
+  const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
 
   const [search, setSearch] = useState("");
   const [tags, setTags] = useState([]);
   const history = useHistory();
 
-  const searchBook = () => {
+  const searchPost = () => {
     if (search.trim() || tags) {
-      dispatch(getBooksBySearch({ search, tags: tags.join(",") }));
+      dispatch(getPostsBySearch({ search, tags: tags.join(",") }));
       history.push(
-        `/books/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`
+        `/posts/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`
       );
     } else {
-      history.push("/");
+      history.push("/posts");
     }
   };
 
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
-      searchBook();
+      searchPost();
     }
   };
 
@@ -68,7 +67,7 @@ const Home = () => {
           className={classes.gridContainer}
         >
           <Grid item xs={12} sm={6} md={9}>
-            <Books setCurrentId={setBookCurrentId} />
+            <Posts setCurrentId={setCurrentId} />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <AppBar
@@ -80,7 +79,7 @@ const Home = () => {
                 onKeyDown={handleKeyPress}
                 name="search"
                 variant="outlined"
-                label="Search Books"
+                label="Search Book Talk posts"
                 fullWidth
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -94,7 +93,7 @@ const Home = () => {
                 variant="outlined"
               />
               <Button
-                onClick={searchBook}
+                onClick={searchPost}
                 className={classes.searchButton}
                 variant="contained"
                 color="primary"
@@ -102,10 +101,10 @@ const Home = () => {
                 Search
               </Button>
             </AppBar>
-            <BookForm currentId={bookCurrentId} setCurrentId={setBookCurrentId} />
+            <Form currentId={currentId} setCurrentId={setCurrentId} />
             {!searchQuery && !tags.length && (
               <Paper className={classes.pagination} elevation={6}>
-                <BookPagination page={page} />
+                <Pagination page={page} />
               </Paper>
             )}
           </Grid>
@@ -115,4 +114,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default PostsPage;

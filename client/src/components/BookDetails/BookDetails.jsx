@@ -8,32 +8,31 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { useParams, useHistory } from "react-router-dom";
-import CommentSection from "./CommentSection";
-import { getPost, getPostsBySearch } from "../../actions/posts";
+import { getBook, getBooksBySearch } from "../../actions/books";
 import useStyles from "./styles";
 
-const Post = () => {
-  const { post, posts, isLoading } = useSelector((state) => state.posts);
+const Book = () => {
+  const { book, books, isLoading } = useSelector((state) => state.books);
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(getPost(id));
+    dispatch(getBook(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    if (post) {
+    if (book) {
       dispatch(
-        getPostsBySearch({ search: "none", tags: post?.tags.join(",") })
+        getBooksBySearch({ search: "none", tags: book?.tags.join(",") })
       );
     }
-  }, [post, dispatch]);
+  }, [book, dispatch]);
 
-  if (!post) return null;
+  if (!book) return null;
 
-  const openPost = (_id) => history.push(`/posts/${_id}`);
+  const openBook = (_id) => history.push(`/books/${_id}`);
 
   if (isLoading) {
     return (
@@ -43,14 +42,14 @@ const Post = () => {
     );
   }
 
-  const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);
+  const recommendedBooks = books.filter(({ _id }) => _id !== book._id);
 
   return (
     <Paper style={{ padding: "20px", borderRadius: "15px" }} elevation={6}>
       <div className={classes.card}>
         <div className={classes.section}>
           <Typography variant="h3" component="h2">
-            {post.title}
+            {book.title}
           </Typography>
           <Typography
             gutterBottom
@@ -58,42 +57,40 @@ const Post = () => {
             color="textSecondary"
             component="h2"
           >
-            {post.tags.map((tag) => `#${tag} `)}
+            {book.tags.map((tag) => `#${tag} `)}
           </Typography>
           <Typography gutterBottom variant="body1" component="p">
-            {post.message}
+            {book.message}
           </Typography>
-          <Typography variant="h6">Created by: {post.name}</Typography>
+          <Typography variant="h6">Created by: {book.name}</Typography>
           <Typography variant="body1">
-            {moment(post.createdAt).fromNow()}
+            {moment(book.createdAt).fromNow()}
           </Typography>
-          <Divider style={{ margin: "20px 0" }} />
-          <CommentSection post={post} />
           <Divider style={{ margin: "20px 0" }} />
         </div>
         <div className={classes.imageSection}>
           <img
             className={classes.media}
             src={
-              post.selectedFile ||
+              book.selectedFile ||
               "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
             }
-            alt={post.title}
+            alt={book.title}
           />
         </div>
       </div>
-      {!!recommendedPosts.length && (
+      {!!recommendedBooks.length && (
         <div className={classes.section}>
           <Typography gutterBottom variant="h5">
             You might also like:
           </Typography>
           <Divider />
-          <div className={classes.recommendedPosts}>
-            {recommendedPosts.map(
-              ({ title, name, message, likes, selectedFile, _id }) => (
+          <div className={classes.recommendedBooks}>
+            {recommendedBooks.map(
+              ({ title, name, message, selectedFile, _id }) => (
                 <div
                   style={{ margin: "20px", cursor: "pointer" }}
-                  onClick={() => openPost(_id)}
+                  onClick={() => openBook(_id)}
                   key={_id}
                 >
                   <Typography gutterBottom variant="h6">
@@ -104,9 +101,6 @@ const Post = () => {
                   </Typography>
                   <Typography gutterBottom variant="subtitle2">
                     {message}
-                  </Typography>
-                  <Typography gutterBottom variant="subtitle1">
-                    Likes: {likes.length}
                   </Typography>
                   <img src={selectedFile} width="200px" alt={selectedFile} />
                 </div>
@@ -119,4 +113,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default Book;

@@ -31,5 +31,18 @@ export const updatePost = (id, updatedPost) =>
   API.patch(`/posts/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 
+export const fetchBook = (id) => API.get(`/books/${id}`);
+export const fetchBooks = (page) => API.get(`/books?page=${page}`);
+export const fetchBooksBySearch = (searchQuery) =>
+  API.get(
+    `/books/search?searchQuery=${searchQuery.search || "none"}&tags=${
+      searchQuery.tags
+    }`
+  );
+export const createBook = (newBook) => API.book("/books", newBook);
+export const updateBook = (id, updatedBook) =>
+  API.patch(`/books/${id}`, updatedBook);
+export const deleteBook = (id) => API.delete(`/books/${id}`);
+
 export const signIn = (formData) => API.post("/user/signin", formData);
 export const signUp = (formData) => API.post("/user/signup", formData);
