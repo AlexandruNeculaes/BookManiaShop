@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
 import { AppBar, Avatar, Typography, Toolbar, Button } from "@material-ui/core";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
+
 import * as actionType from "../../constants/actionTypes";
 import useStyles from "./styles";
 import BookTalk from "../../images/BookTalk.png";
 import BookManiaLogo from "../../images/BookManiaLogo.png";
 
 const Navbar = () => {
-  const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
-  const history = useHistory();
   const location = useLocation();
+  const history = useHistory();
+  const classes = useStyles();
 
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
@@ -38,7 +39,13 @@ const Navbar = () => {
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
       <Link to="/" className={classes.brandContainer}>
-        <img src={BookManiaLogo} alt="icon" height="60px" />
+        <img
+          component={Link}
+          to="/"
+          src={BookManiaLogo}
+          alt="icon"
+          height="60px"
+        />
 
         <img
           className={classes.image}
@@ -48,17 +55,17 @@ const Navbar = () => {
         />
       </Link>
       <Toolbar className={classes.toolbar}>
-        {user ? (
+        {user?.result ? (
           <div className={classes.profile}>
             <Avatar
               className={classes.purple}
-              alt={user.result.name}
-              src={user.result.imageUrl}
+              alt={user?.result.name}
+              src={user?.result.imageUrl}
             >
-              {user.result.name.charAt(0)}
+              {user?.result.name.charAt(0)}
             </Avatar>
             <Typography className={classes.userName} variant="h6">
-              {user.result.name}
+              {user?.result.name}
             </Typography>
             <Button
               variant="contained"
@@ -83,4 +90,5 @@ const Navbar = () => {
     </AppBar>
   );
 };
+
 export default Navbar;

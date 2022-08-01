@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Container,
   Grow,
@@ -11,29 +11,28 @@ import {
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import ChipInput from "material-ui-chip-input";
-import { getPosts, getPostsBySearch } from "../../actions/posts";
-import Pagination from "../Pagination";
+
+import { getPostsBySearch } from "../../actions/posts";
 import Posts from "../Posts/Posts";
 import Form from "../Form/Form";
-
+import Pagination from "../Pagination";
 import useStyles from "./styles";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
-
 const Home = () => {
   const classes = useStyles();
-  const [currentId, setCurrentId] = useState(0);
-  const dispatch = useDispatch();
   const query = useQuery();
   const page = query.get("page") || 1;
   const searchQuery = query.get("searchQuery");
-  const [tags, setTags] = useState([]);
-  const history = useHistory();
+
+  const [currentId, setCurrentId] = useState(0);
+  const dispatch = useDispatch();
 
   const [search, setSearch] = useState("");
-
+  const [tags, setTags] = useState([]);
+  const history = useHistory();
 
   const searchPost = () => {
     if (search.trim() || tags) {
@@ -52,10 +51,10 @@ const Home = () => {
     }
   };
 
-  const handleAdd = (tag) => setTags([...tags, tag]);
+  const handleAddChip = (tag) => setTags([...tags, tag]);
 
-  const handleDelete = (tagToDelete) =>
-    setTags(tags.filter((tag) => tag !== tagToDelete));
+  const handleDeleteChip = (chipToDelete) =>
+    setTags(tags.filter((tag) => tag !== chipToDelete));
 
   return (
     <Grow in>
@@ -80,7 +79,7 @@ const Home = () => {
                 onKeyDown={handleKeyPress}
                 name="search"
                 variant="outlined"
-                label="Search book talk"
+                label="Search Book Talk posts"
                 fullWidth
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -88,8 +87,8 @@ const Home = () => {
               <ChipInput
                 style={{ margin: "10px 0" }}
                 value={tags}
-                onAdd={handleAdd} /*(chip) => handleAddChip(chip)*/
-                onDelete={handleDelete} /*(chip) => handleDeleteChip(chip)*/
+                onAdd={(chip) => handleAddChip(chip)}
+                onDelete={(chip) => handleDeleteChip(chip)}
                 label="Search Tags"
                 variant="outlined"
               />
@@ -103,9 +102,11 @@ const Home = () => {
               </Button>
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
-            <Paper elevation={6}>
-              <Pagination page={page} />
-            </Paper>
+            {!searchQuery && !tags.length && (
+              <Paper className={classes.pagination} elevation={6}>
+                <Pagination page={page} />
+              </Paper>
+            )}
           </Grid>
         </Grid>
       </Container>

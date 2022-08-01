@@ -5,7 +5,6 @@ const userSchema = mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   id: { type: String },
-  role: { type: String, required: false },
 });
 
 export default mongoose.model("User", userSchema);
