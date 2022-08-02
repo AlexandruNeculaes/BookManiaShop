@@ -11,6 +11,7 @@ import useStyles from "./styles";
 const BookForm = ({ currentId, setCurrentId }) => {
   const [bookData, setBookData] = useState({
     title: "",
+    author: "",
     message: "",
     tags: [],
     selectedFile: "",
@@ -27,7 +28,13 @@ const BookForm = ({ currentId, setCurrentId }) => {
 
   const clear = () => {
     setCurrentId(0);
-    setBookData({ title: "", message: "", tags: [], selectedFile: "" });
+    setBookData({
+      title: "",
+      author: "",
+      message: "",
+      tags: [],
+      selectedFile: "",
+    });
   };
 
   useEffect(() => {
@@ -49,6 +56,16 @@ const BookForm = ({ currentId, setCurrentId }) => {
     }
   };
 
+  if (!user?.result?.name) {
+    return (
+      <Paper className={classes.paper} elevation={6}>
+        <Typography variant="h6" align="center">
+          Discover our full range of books.
+        </Typography>
+      </Paper>
+    );
+  }
+
   const handleAddChip = (tag) => {
     setBookData({ ...bookData, tags: [...bookData.tags, tag] });
   };
@@ -60,78 +77,94 @@ const BookForm = ({ currentId, setCurrentId }) => {
     });
   };
 
+  const isAdmin = user.result.role === "admin";
+
   return (
-    <Paper className={classes.paper} elevation={6}>
-      <form
-        autoComplete="off"
-        noValidate
-        className={`${classes.root} ${classes.form}`}
-        onSubmit={handleSubmit}
-      >
-        <Typography variant="h6" color="primary">
-          {currentId ? `Editing "${book?.title}"` : "Add Book"}
-        </Typography>
-        <TextField
-          name="title"
-          variant="outlined"
-          label="Title"
-          fullWidth
-          value={bookData.title}
-          onChange={(e) => setBookData({ ...bookData, title: e.target.value })}
-        />
-        <TextField
-          name="message"
-          variant="outlined"
-          label="Message"
-          fullWidth
-          multiline
-          rows={4}
-          value={bookData.message}
-          onChange={(e) =>
-            setBookData({ ...bookData, message: e.target.value })
-          }
-        />
-        <div style={{ padding: "5px 0", width: "94%" }}>
-          <ChipInput
-            name="tags"
+    isAdmin && (
+      <Paper className={classes.paper} elevation={6}>
+        <form
+          autoComplete="off"
+          noValidate
+          className={`${classes.root} ${classes.form}`}
+          onSubmit={handleSubmit}
+        >
+          <Typography variant="h6" color="primary">
+            {currentId ? `Editing "${book?.title}"` : "Add Book"}
+          </Typography>
+          <TextField
+            name="title"
             variant="outlined"
-            label="Tags"
+            label="Book Title"
             fullWidth
-            value={bookData.tags}
-            onAdd={(chip) => handleAddChip(chip)}
-            onDelete={(chip) => handleDeleteChip(chip)}
-          />
-        </div>
-        <div className={classes.fileInput}>
-          <FileBase
-            type="file"
-            multiple={false}
-            onDone={({ base64 }) =>
-              setBookData({ ...bookData, selectedFile: base64 })
+            value={bookData.title}
+            onChange={(e) =>
+              setBookData({ ...bookData, title: e.target.value })
             }
           />
-        </div>
-        <Button
-          className={classes.buttonSubmit}
-          variant="contained"
-          color="primary"
-          size="large"
-          type="submit"
-          fullWidth
-        >
-          Submit
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          onClick={clear}
-          fullWidth
-        >
-          Clear
-        </Button>
-      </form>
-    </Paper>
+          <TextField
+            name="author"
+            variant="outlined"
+            label="Book Author"
+            fullWidth
+            value={bookData.author}
+            onChange={(e) =>
+              setBookData({ ...bookData, author: e.target.value })
+            }
+          />
+          <TextField
+            name="message"
+            variant="outlined"
+            label="Book description"
+            fullWidth
+            multiline
+            rows={4}
+            value={bookData.message}
+            onChange={(e) =>
+              setBookData({ ...bookData, message: e.target.value })
+            }
+          />
+          <div style={{ padding: "5px 0", width: "94%" }}>
+            <ChipInput
+              name="tags"
+              variant="outlined"
+              label="Book tags"
+              fullWidth
+              value={bookData.tags}
+              onAdd={(chip) => handleAddChip(chip)}
+              onDelete={(chip) => handleDeleteChip(chip)}
+            />
+          </div>
+          <div className={classes.fileInput}>
+            <FileBase
+              type="file"
+              multiple={false}
+              onDone={({ base64 }) =>
+                setBookData({ ...bookData, selectedFile: base64 })
+              }
+            />
+          </div>
+          <Button
+            className={classes.buttonSubmit}
+            variant="contained"
+            color="primary"
+            size="large"
+            type="submit"
+            fullWidth
+          >
+            Submit
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="small"
+            onClick={clear}
+            fullWidth
+          >
+            Clear
+          </Button>
+        </form>
+      </Paper>
+    )
   );
 };
 

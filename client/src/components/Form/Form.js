@@ -84,7 +84,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <TextField
           name="title"
           variant="outlined"
-          label="Title"
+          label="Book-Talk Title"
           fullWidth
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
@@ -92,7 +92,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <TextField
           name="message"
           variant="outlined"
-          label="Message"
+          label="Book-Talk Message"
           fullWidth
           multiline
           rows={4}
@@ -105,7 +105,7 @@ const Form = ({ currentId, setCurrentId }) => {
           <ChipInput
             name="tags"
             variant="outlined"
-            label="Tags"
+            label="Book-Talk Tags"
             fullWidth
             value={postData.tags}
             onAdd={(chip) => handleAddChip(chip)}

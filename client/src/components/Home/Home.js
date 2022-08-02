@@ -90,7 +90,7 @@ const Home = () => {
                 value={tags}
                 onAdd={(chip) => handleAddChip(chip)}
                 onDelete={(chip) => handleDeleteChip(chip)}
-                label="Search Tags"
+                label="Search Book Tags"
                 variant="outlined"
               />
               <Button
@@ -102,7 +102,10 @@ const Home = () => {
                 Search
               </Button>
             </AppBar>
-            <BookForm currentId={bookCurrentId} setCurrentId={setBookCurrentId} />
+            <BookForm
+              currentId={bookCurrentId}
+              setCurrentId={setBookCurrentId}
+            />
             {!searchQuery && !tags.length && (
               <Paper className={classes.pagination} elevation={6}>
                 <BookPagination page={page} />

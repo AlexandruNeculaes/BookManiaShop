@@ -51,6 +51,9 @@ const Book = () => {
           <Typography variant="h3" component="h2">
             {book.title}
           </Typography>
+          <Typography variant="h4" component="p">
+            {book.author}
+          </Typography>
           <Typography
             gutterBottom
             variant="h6"
@@ -61,10 +64,6 @@ const Book = () => {
           </Typography>
           <Typography gutterBottom variant="body1" component="p">
             {book.message}
-          </Typography>
-          <Typography variant="h6">Created by: {book.name}</Typography>
-          <Typography variant="body1">
-            {moment(book.createdAt).fromNow()}
           </Typography>
           <Divider style={{ margin: "20px 0" }} />
         </div>

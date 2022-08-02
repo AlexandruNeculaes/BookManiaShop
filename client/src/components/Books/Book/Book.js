@@ -23,7 +23,6 @@ const Book = ({ book, setCurrentId }) => {
   const history = useHistory();
   const classes = useStyles();
 
-
   const openBook = (e) => {
     // dispatch(getPost(post._id, history));
 
@@ -79,6 +78,14 @@ const Book = ({ book, setCurrentId }) => {
           component="h2"
         >
           {book.title}
+        </Typography>
+        <Typography
+          className={classes.title}
+          gutterBottom
+          variant="h5"
+          component="h2"
+        >
+          {book.author}
         </Typography>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">

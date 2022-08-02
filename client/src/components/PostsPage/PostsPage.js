@@ -89,7 +89,7 @@ const PostsPage = () => {
                 value={tags}
                 onAdd={(chip) => handleAddChip(chip)}
                 onDelete={(chip) => handleDeleteChip(chip)}
-                label="Search Tags"
+                label="Search Book-Talk Tags"
                 variant="outlined"
               />
               <Button

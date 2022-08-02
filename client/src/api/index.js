@@ -39,7 +39,7 @@ export const fetchBooksBySearch = (searchQuery) =>
       searchQuery.tags
     }`
   );
-export const createBook = (newBook) => API.book("/books", newBook);
+export const createBook = (newBook) => API.post("/books", newBook);
 export const updateBook = (id, updatedBook) =>
   API.patch(`/books/${id}`, updatedBook);
 export const deleteBook = (id) => API.delete(`/books/${id}`);
