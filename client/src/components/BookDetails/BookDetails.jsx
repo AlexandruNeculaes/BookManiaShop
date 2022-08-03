@@ -51,9 +51,16 @@ const Book = () => {
           <Typography variant="h3" component="h2">
             {book.title}
           </Typography>
-          <Typography variant="h4" component="p">
+          <Typography variant="h6" component="h2">
             {book.author}
           </Typography>
+          <Typography variant="h6" component="p">
+            {book.year}
+          </Typography>
+          <Typography variant="h6" component="p">
+            {book.publisher}
+          </Typography>
+
           <Typography
             gutterBottom
             variant="h6"
@@ -62,9 +69,13 @@ const Book = () => {
           >
             {book.tags.map((tag) => `#${tag} `)}
           </Typography>
+          <Typography variant="h6" component="h2">
+            {book.price}
+          </Typography>
           <Typography gutterBottom variant="body1" component="p">
             {book.message}
           </Typography>
+
           <Divider style={{ margin: "20px 0" }} />
         </div>
         <div className={classes.imageSection}>

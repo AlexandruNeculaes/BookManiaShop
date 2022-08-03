@@ -87,6 +87,30 @@ const Book = ({ book, setCurrentId }) => {
         >
           {book.author}
         </Typography>
+        <Typography
+          className={classes.title}
+          gutterBottom
+          variant="h5"
+          component="h2"
+        >
+          {book.year}
+        </Typography>
+        <Typography
+          className={classes.title}
+          gutterBottom
+          variant="h5"
+          component="h2"
+        >
+          {book.publisher}
+        </Typography>
+        <Typography
+          className={classes.title}
+          gutterBottom
+          variant="h5"
+          component="h2"
+        >
+          {book.price}
+        </Typography>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {book.message.split(" ").splice(0, 20).join(" ")}...

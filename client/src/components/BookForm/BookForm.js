@@ -12,6 +12,9 @@ const BookForm = ({ currentId, setCurrentId }) => {
   const [bookData, setBookData] = useState({
     title: "",
     author: "",
+    year: "",
+    publisher: "",
+    price: "",
     message: "",
     tags: [],
     selectedFile: "",
@@ -31,6 +34,9 @@ const BookForm = ({ currentId, setCurrentId }) => {
     setBookData({
       title: "",
       author: "",
+      year: "",
+      publisher: "",
+      price: "",
       message: "",
       tags: [],
       selectedFile: "",
@@ -112,6 +118,24 @@ const BookForm = ({ currentId, setCurrentId }) => {
             }
           />
           <TextField
+            name="year"
+            variant="outlined"
+            label="Year"
+            fullWidth
+            value={bookData.year}
+            onChange={(e) => setBookData({ ...bookData, year: e.target.value })}
+          />
+          <TextField
+            name="publisher"
+            variant="outlined"
+            label="Book Publisher"
+            fullWidth
+            value={bookData.publisher}
+            onChange={(e) =>
+              setBookData({ ...bookData, publisher: e.target.value })
+            }
+          />
+          <TextField
             name="message"
             variant="outlined"
             label="Book description"
@@ -121,6 +145,16 @@ const BookForm = ({ currentId, setCurrentId }) => {
             value={bookData.message}
             onChange={(e) =>
               setBookData({ ...bookData, message: e.target.value })
+            }
+          />
+          <TextField
+            name="price"
+            variant="outlined"
+            label="Book Price"
+            fullWidth
+            value={bookData.price}
+            onChange={(e) =>
+              setBookData({ ...bookData, price: e.target.value })
             }
           />
           <div style={{ padding: "5px 0", width: "94%" }}>
