@@ -8,6 +8,7 @@ import * as actionType from "../../constants/actionTypes";
 import useStyles from "./styles";
 import BookTalk from "../../images/BookTalk.png";
 import BookManiaLogo from "../../images/BookManiaLogo.png";
+import cart from "../../images/cart.jpg";
 
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -54,6 +55,10 @@ const Navbar = () => {
           alt="icon"
           height="70px"
         />
+      </Link>
+
+      <Link to="/cart" className={classes.cart}>
+        <img className={classes.image} src={cart} alt="icon" height="70px" />
       </Link>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (

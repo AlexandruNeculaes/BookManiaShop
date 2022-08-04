@@ -59,4 +59,15 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
+
+  imagecart: {
+    marginLeft: "10px",
+    marginRight: "0px",
+    marginTop: "5px",
+  },
+  cartlogo_badge: {
+    width: "30px",
+    height: "30px",
+    marginLeft: "0px",
+  },
 }));

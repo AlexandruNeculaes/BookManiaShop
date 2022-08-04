@@ -6,9 +6,9 @@ import {
   Divider,
 } from "@material-ui/core/";
 import { useDispatch, useSelector } from "react-redux";
-import moment from "moment";
 import { useParams, useHistory } from "react-router-dom";
 import { getBook, getBooksBySearch } from "../../actions/books";
+import { Button } from "@material-ui/core";
 import useStyles from "./styles";
 
 const Book = () => {
@@ -75,7 +75,16 @@ const Book = () => {
           <Typography gutterBottom variant="body1" component="p">
             {book.message}
           </Typography>
-
+          <Button
+            className={classes.buttonSubmit}
+            variant="contained"
+            color="primary"
+            size="large"
+            type="submit"
+            fullWidth
+          >
+            Add to cart
+          </Button>
           <Divider style={{ margin: "20px 0" }} />
         </div>
         <div className={classes.imageSection}>

@@ -44,7 +44,7 @@ const BookForm = ({ currentId, setCurrentId }) => {
   };
 
   useEffect(() => {
-    if (!book?.title) clear();
+    if (!book?.title);
     if (book) setBookData(book);
   }, [book]);
 

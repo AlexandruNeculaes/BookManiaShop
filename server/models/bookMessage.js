@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 const bookSchema = mongoose.Schema({
   title: String,
   author: String,
-  year: String,
+  year: Number,
   publisher: String,
   message: String,
-  price: String,
+  price: Number,
   name: String,
   creator: String,
   tags: [String],

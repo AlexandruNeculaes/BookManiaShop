@@ -5,8 +5,6 @@ import {
   CREATE,
   UPDATE,
   DELETE,
-  LIKE,
-  COMMENT,
 } from "../constants/actionTypes";
 
 export default (state = { isLoading: true, books: [] }, action) => {

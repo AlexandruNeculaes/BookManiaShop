@@ -31,7 +31,7 @@ const Form = ({ currentId, setCurrentId }) => {
   };
 
   useEffect(() => {
-    if (!post?.title) clear();
+    if (!post?.title);
     if (post) setPostData(post);
   }, [post]);
 
