@@ -46,3 +46,6 @@ export const deleteBook = (id) => API.delete(`/books/${id}`);
 
 export const signIn = (formData) => API.post("/user/signin", formData);
 export const signUp = (formData) => API.post("/user/signup", formData);
+
+//api to connect to backend and process the payment
+export const doPayment = (data) => API.post("/payment/", data);

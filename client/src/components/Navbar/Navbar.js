@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { AppBar, Avatar, Typography, Toolbar, Button } from "@material-ui/core";
+import { useSelector } from "react-redux";
+import {
+  AppBar,
+  Avatar,
+  Typography,
+  Toolbar,
+  Button,
+  Badge,
+} from "@material-ui/core";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
-
+import { emptyCart } from "../../actions/cart";
 import * as actionType from "../../constants/actionTypes";
 import useStyles from "./styles";
 import BookTalk from "../../images/BookTalk.png";
+import About from "../../images/about.jpg";
 import BookManiaLogo from "../../images/BookManiaLogo.png";
-import cart from "../../images/cart.jpg";
+import cartImage from "../../images/cart.jpg";
 
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -17,8 +26,20 @@ const Navbar = () => {
   const history = useHistory();
   const classes = useStyles();
 
+  const { cart } = useSelector((state) => state.cart);
+  const [cartCount, setCartCount] = useState(0);
+  useEffect(() => {
+    let count = 0;
+    cart.forEach((item) => {
+      count += item.qty;
+    });
+
+    setCartCount(count);
+  }, [cart]);
+
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
+    dispatch(emptyCart());
 
     history.push("/auth");
 
@@ -56,9 +77,19 @@ const Navbar = () => {
           height="70px"
         />
       </Link>
+      <Link to="/about" className={classes.brandContainer}>
+        <img className={classes.image} src={About} alt="icon" height="70px" />
+      </Link>
 
       <Link to="/cart" className={classes.cart}>
-        <img className={classes.image} src={cart} alt="icon" height="70px" />
+        <Badge badgeContent={cartCount} color="primary">
+          <img
+            className={classes.image}
+            src={cartImage}
+            alt="icon"
+            height="70px"
+          />
+        </Badge>
       </Link>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (

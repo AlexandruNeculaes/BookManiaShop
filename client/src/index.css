@@ -6,3 +6,8 @@ body {
   /* font-family: 'Noto Sans JP' !important; */
   font-family: "Heebo", sans-serif !important;
 }
+
+.MuiBadge-anchorOriginTopRightRectangle {
+  top: 16px !important;
+  right: 16px !important;
+}

@@ -3,5 +3,6 @@ import { combineReducers } from "redux";
 import posts from "./posts";
 import auth from "./auth";
 import books from "./books";
+import cart from "./cart";
 
-export const reducers = combineReducers({ books, posts, auth });
+export const reducers = combineReducers({ books, posts, auth, cart });

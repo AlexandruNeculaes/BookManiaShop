@@ -8,6 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getBook, getBooksBySearch } from "../../actions/books";
+import { addToCart } from "../../actions/cart";
 import { Button } from "@material-ui/core";
 import useStyles from "./styles";
 
@@ -82,6 +83,9 @@ const Book = () => {
             size="large"
             type="submit"
             fullWidth
+            onClick={() => {
+              dispatch(addToCart(book));
+            }}
           >
             Add to cart
           </Button>
