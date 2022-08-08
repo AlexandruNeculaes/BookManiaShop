@@ -19,12 +19,14 @@ import About from "../../images/about.jpg";
 import BookManiaLogo from "../../images/BookManiaLogo.png";
 import cartImage from "../../images/cart.jpg";
 
+/* eslint-disable */
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
   const classes = useStyles();
+  
 
   const { cart } = useSelector((state) => state.cart);
   const [cartCount, setCartCount] = useState(0);

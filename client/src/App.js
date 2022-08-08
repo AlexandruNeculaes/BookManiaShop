@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar/Navbar";
 import PostsPage from "./components/PostsPage/PostsPage";
 import Auth from "./components/Auth/Auth";
 import Home from "./components/Home/Home";
+import About from "./components/About/About";
 import Cart from "./components/Cart/Cart";
 import BookDetails from "./components/BookDetails/BookDetails";
 
@@ -32,6 +33,7 @@ const App = () => {
             exact
             component={() => (!user ? <Auth /> : <Redirect to="/posts" />)}
           />
+          <Route path="/about" exact component={About} />
         </Switch>
       </Container>
     </BrowserRouter>
