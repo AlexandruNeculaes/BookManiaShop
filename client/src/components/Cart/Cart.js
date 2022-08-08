@@ -76,7 +76,7 @@ const Cart = () => {
               <div style={{ marginTop: "20px" }}>
                 <Paper elevation={3}>
                   <Box sx={{ padding: "30px 20px !important" }}>
-                    <Typography variant="h5" component="h1">
+                    <Typography variant="h5" color="primary" component="h1">
                       Your cart is empty
                     </Typography>
                   </Box>
@@ -88,11 +88,11 @@ const Cart = () => {
             <div style={{ marginTop: "20px" }}>
               <Paper elevation={3}>
                 <Box sx={{ padding: "30px 20px !important" }}>
-                  <Typography variant="h5" component="h1">
+                  <Typography variant="h5" color="primary" component="h1">
                     Cart Summary
                   </Typography>
                   <div style={{ margin: "30px 0" }}>
-                    <Typography variant="h6" component="h6">
+                    <Typography variant="h6" color="error" component="h6">
                       Order Total ({totalItems} Item): {totalPrice}€
                     </Typography>
                   </div>

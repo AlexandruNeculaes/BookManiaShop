@@ -49,7 +49,7 @@ const Post = () => {
     <Paper style={{ padding: "20px", borderRadius: "15px" }} elevation={6}>
       <div className={classes.card}>
         <div className={classes.section}>
-          <Typography variant="h3" component="h2">
+          <Typography variant="h3" color="primary" component="h2">
             {post.title}
           </Typography>
           <Typography
@@ -63,7 +63,9 @@ const Post = () => {
           <Typography gutterBottom variant="body1" component="p">
             {post.message}
           </Typography>
-          <Typography variant="h6">Created by: {post.name}</Typography>
+          <Typography variant="h6" color="success">
+            Created by: {post.name}
+          </Typography>
           <Typography variant="body1">
             {moment(post.createdAt).fromNow()}
           </Typography>
@@ -84,7 +86,7 @@ const Post = () => {
       </div>
       {!!recommendedPosts.length && (
         <div className={classes.section}>
-          <Typography gutterBottom variant="h5">
+          <Typography gutterBottom variant="h5" color="success">
             You might also like:
           </Typography>
           <Divider />

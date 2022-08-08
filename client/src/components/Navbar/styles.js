@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { deepPurple } from "@material-ui/core/colors";
+import { deepPurple, grey } from "@material-ui/core/colors";
 
 export default makeStyles((theme) => ({
   appBar: {
@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    color: "secondary",
+    backgroundColor: grey[50],
     padding: "10px 50px",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",

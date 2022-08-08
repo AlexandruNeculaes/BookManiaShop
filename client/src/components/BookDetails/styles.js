@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { blue, red } from "@material-ui/core/colors";
 
 export default makeStyles((theme) => ({
   media: {
@@ -14,6 +15,7 @@ export default makeStyles((theme) => ({
       flexWrap: "wrap",
       flexDirection: "column",
     },
+    backgroundColor: blue[50],
   },
   section: {
     borderRadius: "20px",
@@ -41,9 +43,15 @@ export default makeStyles((theme) => ({
     height: "39vh",
   },
   commentsOuterContainer: {
-    display: 'flex', justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
   },
   commentsInnerContainer: {
-    height:'200px', overflowY:'auto', marginRight: '30px'
+    height: "200px",
+    overflowY: "auto",
+    marginRight: "30px",
+  },
+  buttonSubmit: {
+    backgroundColor: red[200],
   },
 }));

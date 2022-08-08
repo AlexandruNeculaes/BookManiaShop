@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { blue } from "@material-ui/core/colors";
 
 export default makeStyles((theme) => ({
   media: {
@@ -10,6 +11,7 @@ export default makeStyles((theme) => ({
   card: {
     display: "flex",
     width: "100%",
+    backgroundColor: blue[50],
     [theme.breakpoints.down("sm")]: {
       flexWrap: "wrap",
       flexDirection: "column",
@@ -41,9 +43,12 @@ export default makeStyles((theme) => ({
     height: "39vh",
   },
   commentsOuterContainer: {
-    display: 'flex', justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
   },
   commentsInnerContainer: {
-    height:'200px', overflowY:'auto', marginRight: '30px'
+    height: "200px",
+    overflowY: "auto",
+    marginRight: "30px",
   },
 }));

@@ -30,8 +30,8 @@ const CartItem = ({ book }) => {
           </div>
           <div className="contentContainer">
             <h1>{book.title}</h1>
-            <p>{book.message}</p>
-            <h4>${book.price}</h4>
+            <p>{book.author}</p>
+            <h4>{book.price}€</h4>
             <div className="btnContainer">
               <div className="qtyContainer">
                 <IconButton onClick={decreaseQtyHandler}>

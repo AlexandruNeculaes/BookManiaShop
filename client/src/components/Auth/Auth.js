@@ -151,7 +151,7 @@ const SignUp = () => {
           />
           <Grid container justify="flex-end">
             <Grid item>
-              <Button onClick={switchMode}>
+              <Button onClick={switchMode} color="secondary">
                 {isSignup
                   ? "Already have an account? Sign in"
                   : "Don't have an account? Sign Up"}

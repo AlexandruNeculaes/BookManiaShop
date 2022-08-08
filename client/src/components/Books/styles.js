@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { deepPurple } from "@material-ui/core/colors";
+import { deepPurple, blue } from "@material-ui/core/colors";
 
 export default makeStyles((theme) => ({
   mainContainer: {
@@ -10,6 +10,7 @@ export default makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     padding: "10px 50px",
+    backgroundColor: blue[50],
   },
   heading: {
     color: "rgba(0,183,255, 1)",

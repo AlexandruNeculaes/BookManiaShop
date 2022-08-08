@@ -106,10 +106,11 @@ const Book = ({ book, setCurrentId }) => {
         <Typography
           className={classes.title}
           gutterBottom
+          color="error"
           variant="h5"
           component="h2"
         >
-          {book.price}
+          Price: {book.price}€
         </Typography>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">

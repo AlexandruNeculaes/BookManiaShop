@@ -49,17 +49,17 @@ const Book = () => {
     <Paper style={{ padding: "20px", borderRadius: "15px" }} elevation={6}>
       <div className={classes.card}>
         <div className={classes.section}>
-          <Typography variant="h3" component="h2">
+          <Typography variant="h3" color="primary" component="h2">
             {book.title}
           </Typography>
           <Typography variant="h6" component="h2">
-            {book.author}
+            by: {book.author}
           </Typography>
           <Typography variant="h6" component="p">
-            {book.year}
+            year: {book.year}
           </Typography>
           <Typography variant="h6" component="p">
-            {book.publisher}
+            publisher: {book.publisher}
           </Typography>
 
           <Typography
@@ -70,16 +70,16 @@ const Book = () => {
           >
             {book.tags.map((tag) => `#${tag} `)}
           </Typography>
-          <Typography variant="h6" component="h2">
-            {book.price}
+          <Typography variant="h6" color="error" component="h2">
+            Price: {book.price}€
           </Typography>
           <Typography gutterBottom variant="body1" component="p">
-            {book.message}
+            Description: {book.message}
           </Typography>
           <Button
             className={classes.buttonSubmit}
             variant="contained"
-            color="primary"
+            color="success"
             size="large"
             type="submit"
             fullWidth
@@ -119,9 +119,7 @@ const Book = () => {
                   <Typography gutterBottom variant="h6">
                     {title}
                   </Typography>
-                  <Typography gutterBottom variant="subtitle2">
-                    {name}
-                  </Typography>
+
                   <Typography gutterBottom variant="subtitle2">
                     {message}
                   </Typography>

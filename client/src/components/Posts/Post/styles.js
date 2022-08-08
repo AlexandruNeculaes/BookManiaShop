@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { green } from "@material-ui/core/colors";
 
 export default makeStyles({
   media: {
@@ -20,6 +21,7 @@ export default makeStyles({
     borderRadius: "15px",
     height: "100%",
     position: "relative",
+    backgroundColor: green[50],
   },
   overlay: {
     position: "absolute",
