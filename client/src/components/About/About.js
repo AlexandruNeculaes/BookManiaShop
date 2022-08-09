@@ -71,8 +71,8 @@ const App = () => {
           alignItems: "center",
         }}
       >
-        This is a website developed by Alexandru Neculaes using MERN stack as
-        part part of a project required for NCI.
+        Designed and developed using MERN stack by Alexandru Neculaes | NCI Final
+        Project
       </h4>
     </div>
   );

@@ -53,11 +53,12 @@ const CommentSection = ({ post }) => {
             onChange={(e) => setComment(e.target.value)}
           />
           <br />
+
           <Button
             style={{ marginTop: "10px" }}
             fullWidth
             disabled={!comment.length}
-            color="primary"
+            color="error"
             variant="contained"
             onClick={handleComment}
           >

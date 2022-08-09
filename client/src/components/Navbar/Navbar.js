@@ -26,7 +26,6 @@ const Navbar = () => {
   const location = useLocation();
   const history = useHistory();
   const classes = useStyles();
-  
 
   const { cart } = useSelector((state) => state.cart);
   const [cartCount, setCartCount] = useState(0);
@@ -89,7 +88,7 @@ const Navbar = () => {
             className={classes.image}
             src={cartImage}
             alt="icon"
-            height="70px"
+            height="100px"
           />
         </Badge>
       </Link>

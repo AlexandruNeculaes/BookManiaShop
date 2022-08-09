@@ -90,7 +90,7 @@ const Home = () => {
                 value={tags}
                 onAdd={(chip) => handleAddChip(chip)}
                 onDelete={(chip) => handleDeleteChip(chip)}
-                label="Search Book Tags"
+                label="Search Book By Tags"
                 variant="outlined"
               />
               <Button

@@ -104,29 +104,27 @@ const Book = () => {
       </div>
       {!!recommendedBooks.length && (
         <div className={classes.section}>
-          <Typography gutterBottom variant="h5">
+          <Typography gutterBottom variant="h5" color="success">
             You might also like:
           </Typography>
           <Divider />
           <div className={classes.recommendedBooks}>
-            {recommendedBooks.map(
-              ({ title, name, message, selectedFile, _id }) => (
-                <div
-                  style={{ margin: "20px", cursor: "pointer" }}
-                  onClick={() => openBook(_id)}
-                  key={_id}
-                >
-                  <Typography gutterBottom variant="h6">
-                    {title}
-                  </Typography>
+            {recommendedBooks.map(({ title, message, selectedFile, _id }) => (
+              <div
+                style={{ margin: "20px", cursor: "pointer" }}
+                onClick={() => openBook(_id)}
+                key={_id}
+              >
+                <Typography gutterBottom variant="h6">
+                  {title}
+                </Typography>
 
-                  <Typography gutterBottom variant="subtitle2">
-                    {message}
-                  </Typography>
-                  <img src={selectedFile} width="200px" alt={selectedFile} />
-                </div>
-              )
-            )}
+                <Typography gutterBottom variant="subtitle2">
+                  {message}
+                </Typography>
+                <img src={selectedFile} width="200px" alt={selectedFile} />
+              </div>
+            ))}
           </div>
         </div>
       )}

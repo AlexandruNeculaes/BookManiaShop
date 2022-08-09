@@ -122,7 +122,7 @@ const Cart = () => {
                         </div>
                       )}
                     </StripeCheckout>
-                  )}
+                  )} 
                   {!user?.result?.name && (
                     <Link to="/auth">
                       <Button>Log in to proceede to checkout</Button>
