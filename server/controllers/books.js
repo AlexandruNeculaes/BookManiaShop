@@ -76,12 +76,33 @@ export const createBook = async (req, res) => {
 
 export const updateBook = async (req, res) => {
   const { id } = req.params;
-  const { title, message, creator, selectedFile, tags } = req.body;
+  const {
+    title,
+    author,
+    year,
+    publisher,
+    message,
+    creator,
+    price,
+    selectedFile,
+    tags,
+  } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No book with id: ${id}`);
 
-  const updatedBook = { creator, title, message, tags, selectedFile, _id: id };
+  const updatedBook = {
+    title,
+    author,
+    year,
+    publisher,
+    message,
+    creator,
+    price,
+    selectedFile,
+    tags,
+    _id: id,
+  };
 
   await BookMessage.findByIdAndUpdate(id, updatedBook, { new: true });
 

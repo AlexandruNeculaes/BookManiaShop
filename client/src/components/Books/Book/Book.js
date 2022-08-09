@@ -52,7 +52,8 @@ const Book = ({ book, setCurrentId }) => {
           </Typography>
         </div>
         {(user?.result?.googleId === book?.creator ||
-          user?.result?._id === book?.creator) && (
+          user?.result?._id === book?.creator ||
+          user?.result?.role === "admin") && (
           <div className={classes.overlay2} name="edit">
             <Button
               onClick={(e) => {
@@ -120,7 +121,8 @@ const Book = ({ book, setCurrentId }) => {
       </ButtonBase>
       <CardActions className={classes.cardActions}>
         {(user?.result?.googleId === book?.creator ||
-          user?.result?._id === book?.creator) && (
+          user?.result?._id === book?.creator ||
+          user?.result?.role === "admin") && (
           <Button
             size="small"
             color="secondary"

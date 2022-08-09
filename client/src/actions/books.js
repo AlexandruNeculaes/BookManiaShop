@@ -69,7 +69,7 @@ export const createBook = (book, history) => async (dispatch) => {
 export const updateBook = (id, book) => async (dispatch) => {
   try {
     const { data } = await api.updateBook(id, book);
-
+    console.log(data);
     dispatch({ type: UPDATE, payload: data });
   } catch (error) {
     console.log(error);

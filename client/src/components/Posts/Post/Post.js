@@ -40,7 +40,7 @@ const Post = ({ post, setCurrentId }) => {
   };
 
   const Likes = () => {
-    if (likes.length > 0) {
+    if (likes?.length > 0) {
       return likes.find((like) => like === userId) ? (
         <>
           <ThumbUpAltIcon fontSize="small" />

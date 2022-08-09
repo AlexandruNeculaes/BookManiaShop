@@ -50,7 +50,7 @@ const BookForm = ({ currentId, setCurrentId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log(bookData);
     if (currentId === 0) {
       dispatch(createBook({ ...bookData, name: user?.result?.name }, history));
       clear();

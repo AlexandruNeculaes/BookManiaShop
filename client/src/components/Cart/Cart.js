@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import stripe from "../../images/stripe.jpg";
+import { Link } from "react-router-dom";
 import * as api from "../../api/index.js";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -28,6 +29,7 @@ const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   const [paymentMessage, setPaymentMessage] = useState("");
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(() => {
     let items = 0;
@@ -97,27 +99,50 @@ const Cart = () => {
                     </Typography>
                   </div>
                   {/* stripe component for getting the card info */}
-                  <StripeCheckout
-                    stripeKey={KEY}
-                    token={makePayment}
-                    name="Checkout and Pay"
-                    amount={totalPrice * 100}
-                  >
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      disabled={totalItems < 1}
+                  {user?.result?.name && (
+                    <StripeCheckout
+                      stripeKey={KEY}
+                      billingAddress
+                      token={makePayment}
+                      name="Checkout and Pay"
+                      amount={totalPrice * 100}
                     >
-                      Proceed to Checkout
-                    </Button>
-                    {paymentMessage !== "" && (
-                      <div style={{ marginTop: "10px" }}>
-                        <Typography variant="body1" component="p">
-                          {paymentMessage}
-                        </Typography>
-                      </div>
-                    )}
-                  </StripeCheckout>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        disabled={totalItems < 1}
+                      >
+                        Proceed to Checkout
+                      </Button>
+                      {paymentMessage !== "" && (
+                        <div style={{ marginTop: "10px" }}>
+                          <Typography variant="body1" component="p">
+                            {paymentMessage}
+                          </Typography>
+                        </div>
+                      )}
+                    </StripeCheckout>
+                  )}
+                  {!user?.result?.name && (
+                    <Link to="/auth">
+                      <Button>Log in to proceede to checkout</Button>
+                    </Link>
+                  )}
+                </Box>
+              </Paper>
+              <br />
+              <br />
+              <Paper elevation={3}>
+                <Box sx={{ padding: "30px 20px !important" }}>
+                  <Typography variant="h5" color="primary" component="h1">
+                    For testing purposes please use Stripe credentials!
+                  </Typography>
+                  <img
+                    className={classes.image}
+                    src={stripe}
+                    alt="icon"
+                    height="200px"
+                  />
                 </Box>
               </Paper>
             </div>
