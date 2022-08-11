@@ -61,7 +61,7 @@ const Cart = () => {
     }
     setTimeout(() => {
       setPaymentMessage("");
-    }, 2000);
+    }, 20000);
   };
 
   return (
@@ -121,7 +121,7 @@ const Cart = () => {
                       </Button>
                       {paymentMessage !== "" && (
                         <div style={{ marginTop: "10px" }}>
-                          <Typography variant="body1" component="p">
+                          <Typography variant="h3" component="p">
                             {paymentMessage}
                           </Typography>
                         </div>
