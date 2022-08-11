@@ -1,6 +1,7 @@
 import React from "react";
 import mern from "../../images/mern.png";
 
+//about page
 const App = () => {
   return (
     <div>
@@ -71,8 +72,8 @@ const App = () => {
           alignItems: "center",
         }}
       >
-        Designed and developed using MERN stack by Alexandru Neculaes | NCI Final
-        Project
+        Designed and developed using MERN stack by Alexandru Neculaes | NCI
+        Final Project
       </h4>
     </div>
   );

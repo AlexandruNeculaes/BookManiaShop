@@ -12,8 +12,11 @@ import { addToCart } from "../../actions/cart";
 import { Button } from "@material-ui/core";
 import useStyles from "./styles";
 
+//book detail component
 const Book = () => {
+  //state variables from react redux store
   const { book, books, isLoading } = useSelector((state) => state.books);
+
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
@@ -25,6 +28,7 @@ const Book = () => {
 
   useEffect(() => {
     if (book) {
+      //dispatching the action to search the book
       dispatch(
         getBooksBySearch({ search: "none", tags: book?.tags.join(",") })
       );
@@ -43,6 +47,7 @@ const Book = () => {
     );
   }
 
+  //filtering the books
   const recommendedBooks = books.filter(({ _id }) => _id !== book._id);
 
   return (

@@ -8,7 +8,9 @@ import ChipInput from "material-ui-chip-input";
 import { createBook, updateBook } from "../../actions/books";
 import useStyles from "./styles";
 
+//book form component
 const BookForm = ({ currentId, setCurrentId }) => {
+  //state for book data
   const [bookData, setBookData] = useState({
     title: "",
     author: "",
@@ -19,6 +21,8 @@ const BookForm = ({ currentId, setCurrentId }) => {
     tags: [],
     selectedFile: "",
   });
+
+  //getting the book data from store
   const book = useSelector((state) =>
     currentId
       ? state.books.books.find((message) => message._id === currentId)
@@ -29,6 +33,7 @@ const BookForm = ({ currentId, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const history = useHistory();
 
+  //clear function to set the book data to intial state
   const clear = () => {
     setCurrentId(0);
     setBookData({
@@ -48,13 +53,16 @@ const BookForm = ({ currentId, setCurrentId }) => {
     if (book) setBookData(book);
   }, [book]);
 
+  //submit function to create a new book
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(bookData);
     if (currentId === 0) {
+      //dispatching an action to create a new book
       dispatch(createBook({ ...bookData, name: user?.result?.name }, history));
       clear();
     } else {
+      //disptaching action to update the exisitng book
       dispatch(
         updateBook(currentId, { ...bookData, name: user?.result?.name })
       );
@@ -83,6 +91,7 @@ const BookForm = ({ currentId, setCurrentId }) => {
     });
   };
 
+  //checking if the user is admin
   const isAdmin = user.result.role === "admin";
 
   return (

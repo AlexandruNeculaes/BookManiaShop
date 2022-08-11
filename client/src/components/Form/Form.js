@@ -8,13 +8,17 @@ import ChipInput from "material-ui-chip-input";
 import { createPost, updatePost } from "../../actions/posts";
 import useStyles from "./styles";
 
+//form component
 const Form = ({ currentId, setCurrentId }) => {
+  //state to store the post data
   const [postData, setPostData] = useState({
     title: "",
     message: "",
     tags: [],
     selectedFile: "",
   });
+
+  //getting the post state from store
   const post = useSelector((state) =>
     currentId
       ? state.posts.posts.find((message) => message._id === currentId)
@@ -25,6 +29,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const history = useHistory();
 
+  //function to clear the post data
   const clear = () => {
     setCurrentId(0);
     setPostData({ title: "", message: "", tags: [], selectedFile: "" });
@@ -35,6 +40,7 @@ const Form = ({ currentId, setCurrentId }) => {
     if (post) setPostData(post);
   }, [post]);
 
+  //function to submit the form
   const handleSubmit = async (e) => {
     e.preventDefault();
 

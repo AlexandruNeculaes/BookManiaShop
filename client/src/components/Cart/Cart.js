@@ -18,14 +18,19 @@ import useStyles from "./styles";
 import CartItem from "./CartItem/CartItem";
 import { emptyCart } from "../../actions/cart.js";
 
+//stripe key
 const KEY = process.env.REACT_APP_STRIPE_KEY;
 
+//component for cary
 const Cart = () => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
 
+  //getting the cart state from store
   const { cart } = useSelector((state) => state.cart);
+
+  //states
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   const [paymentMessage, setPaymentMessage] = useState("");
@@ -99,7 +104,7 @@ const Cart = () => {
                     </Typography>
                   </div>
                   {/* stripe component for getting the card info */}
-                  {user?.result?.name && (
+                  {user?.result?.name && totalItems >= 1 && (
                     <StripeCheckout
                       stripeKey={KEY}
                       billingAddress
@@ -122,7 +127,16 @@ const Cart = () => {
                         </div>
                       )}
                     </StripeCheckout>
-                  )} 
+                  )}
+                  {totalItems < 1 && (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      disabled={totalItems < 1}
+                    >
+                      Proceed to Checkout
+                    </Button>
+                  )}
                   {!user?.result?.name && (
                     <Link to="/auth">
                       <Button>Log in to proceede to checkout</Button>

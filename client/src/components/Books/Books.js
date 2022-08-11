@@ -5,7 +5,9 @@ import { useSelector } from "react-redux";
 import Book from "./Book/Book";
 import useStyles from "./styles";
 
+//component to display the books
 const Books = ({ setCurrentId }) => {
+  //getting the states from store
   const { books, isLoading } = useSelector((state) => state.books);
   console.log("BOOKS", books);
   const classes = useStyles();

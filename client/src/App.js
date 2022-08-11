@@ -12,10 +12,12 @@ import Cart from "./components/Cart/Cart";
 import BookDetails from "./components/BookDetails/BookDetails";
 
 const App = () => {
+  //getting the user data saved in local storage
   const user = JSON.parse(localStorage.getItem("profile"));
   console.log(user);
 
   return (
+    //adding react router and defining routes
     <BrowserRouter>
       <Container maxWidth="xl">
         <Navbar />

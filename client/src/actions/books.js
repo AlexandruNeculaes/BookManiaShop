@@ -10,6 +10,7 @@ import {
 } from "../constants/actionTypes";
 import * as api from "../api/index.js";
 
+//function for actions related to books and dispatching the data to the reducers
 export const getBook = (id) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });

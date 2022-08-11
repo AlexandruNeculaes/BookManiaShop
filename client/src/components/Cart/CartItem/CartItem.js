@@ -7,13 +7,16 @@ import RemoveIcon from "@material-ui/icons/Remove";
 import DeleteIcon from "@material-ui/icons/Delete";
 import "./CartItem.css";
 
+//component for individual cart item
 const CartItem = ({ book }) => {
   const dispatch = useDispatch();
 
+  //function to increase the quantity of an item
   const increaseQtyHandler = () => {
     dispatch(adjustQty(book, book.qty + 1));
   };
 
+  //function to decrease the quantity of an item
   const decreaseQtyHandler = () => {
     if (book.qty === 1) {
       dispatch(removeFromCart(book));

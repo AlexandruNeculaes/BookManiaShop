@@ -22,12 +22,15 @@ import useStyles from "./styles";
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
+
+//home component
 const Home = () => {
   const classes = useStyles();
   const query = useQuery();
   const page = query.get("page") || 1;
   const searchQuery = query.get("searchQuery");
 
+  //states
   const [bookCurrentId, setBookCurrentId] = useState(0);
   const dispatch = useDispatch();
 
@@ -35,6 +38,7 @@ const Home = () => {
   const [tags, setTags] = useState([]);
   const history = useHistory();
 
+  //function to search the book
   const searchBook = () => {
     if (search.trim() || tags) {
       dispatch(getBooksBySearch({ search, tags: tags.join(",") }));

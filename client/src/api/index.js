@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//configurng the axios
 const API = axios.create({
   baseURL: "http://localhost:5000",
 });
@@ -14,6 +15,8 @@ API.interceptors.request.use((req) => {
 
   return req;
 });
+
+//api requests
 
 export const fetchPost = (id) => API.get(`/posts/${id}`);
 export const fetchPosts = (page) => API.get(`/posts?page=${page}`);

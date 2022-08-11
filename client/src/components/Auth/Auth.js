@@ -26,9 +26,12 @@ const initialState = {
   confirmPassword: "",
 };
 
+//signup and login page
 const SignUp = () => {
+  //states
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
+
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
@@ -42,6 +45,7 @@ const SignUp = () => {
     setShowPassword(false);
   };
 
+  //submit function when a form is submitted
   const handleSubmit = (e) => {
     e.preventDefault();
 

@@ -6,6 +6,7 @@ config();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 import { v4 as uuidv4 } from "uuid";
 
+//function to process the payment
 export const paymentController = (req, res, next) => {
   const { totalPrice, token } = req.body;
   //generating a unqiue id

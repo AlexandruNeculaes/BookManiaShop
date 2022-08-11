@@ -9,6 +9,7 @@ import {
   COMMENT,
 } from "../constants/actionTypes";
 
+//posts reducer to set the state data for posts
 export default (state = { isLoading: true, posts: [] }, action) => {
   switch (action.type) {
     case "START_LOADING":

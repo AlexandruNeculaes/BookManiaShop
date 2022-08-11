@@ -21,14 +21,18 @@ import cartImage from "../../images/cart.jpg";
 
 /* eslint-disable */
 const Navbar = () => {
+  //getting user from local storage and setting it as state
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
   const classes = useStyles();
 
+  //getting state from state
   const { cart } = useSelector((state) => state.cart);
   const [cartCount, setCartCount] = useState(0);
+
+  //increasing the cart number when the cart length changes
   useEffect(() => {
     let count = 0;
     cart.forEach((item) => {
@@ -38,6 +42,7 @@ const Navbar = () => {
     setCartCount(count);
   }, [cart]);
 
+  //function to logout the user
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
     dispatch(emptyCart());
@@ -56,6 +61,7 @@ const Navbar = () => {
       if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }
 
+    //storing the user in local storage
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 

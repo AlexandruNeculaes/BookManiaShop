@@ -17,7 +17,9 @@ import { useHistory } from "react-router-dom";
 import { deleteBook } from "../../../actions/books";
 import useStyles from "./styles";
 
+//component for individual book card
 const Book = ({ book, setCurrentId }) => {
+  //getting the user from local storage
   const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
   const history = useHistory();

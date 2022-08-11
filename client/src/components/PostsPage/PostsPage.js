@@ -27,6 +27,7 @@ const PostsPage = () => {
   const page = query.get("page") || 1;
   const searchQuery = query.get("searchQuery");
 
+  //states
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
 
@@ -34,6 +35,7 @@ const PostsPage = () => {
   const [tags, setTags] = useState([]);
   const history = useHistory();
 
+  //function to seach the posts
   const searchPost = () => {
     if (search.trim() || tags) {
       dispatch(getPostsBySearch({ search, tags: tags.join(",") }));

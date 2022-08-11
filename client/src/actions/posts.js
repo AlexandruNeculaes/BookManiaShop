@@ -12,6 +12,8 @@ import {
 } from "../constants/actionTypes";
 import * as api from "../api/index.js";
 
+//function for actions related to posts and dispatching the data to the reducers
+
 export const getPost = (id) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });

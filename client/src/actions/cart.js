@@ -5,6 +5,7 @@ import {
   EMPTY_CART,
 } from "../constants/actionTypes";
 
+//function for actions related to cart and dispatching the data to the reducers
 export const addToCart = (item) => {
   return {
     type: ADD_TO_CART,

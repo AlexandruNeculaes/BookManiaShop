@@ -7,6 +7,7 @@ import {
   DELETE,
 } from "../constants/actionTypes";
 
+//books reducer to set the state data for books
 export default (state = { isLoading: true, books: [] }, action) => {
   switch (action.type) {
     case "START_LOADING":

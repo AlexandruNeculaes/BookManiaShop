@@ -5,6 +5,7 @@ import {
   EMPTY_CART,
 } from "../constants/actionTypes";
 
+//cart reducer to set the state data for cart
 const cartReducer = (state = { cart: [] }, action) => {
   switch (action.type) {
     //reducer to add the item to the cart

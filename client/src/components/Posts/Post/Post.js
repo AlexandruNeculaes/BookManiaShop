@@ -19,6 +19,7 @@ import { useHistory } from "react-router-dom";
 import { likePost, deletePost } from "../../../actions/posts";
 import useStyles from "./styles";
 
+//componet for individual post
 const Post = ({ post, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const [likes, setLikes] = useState(post?.likes);
@@ -29,6 +30,7 @@ const Post = ({ post, setCurrentId }) => {
   const userId = user?.result.googleId || user?.result?._id;
   const hasLikedPost = post?.likes?.find((like) => like === userId);
 
+  //fucntion to like the post
   const handleLike = async () => {
     dispatch(likePost(post._id));
 
