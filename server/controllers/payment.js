@@ -1,7 +1,9 @@
 import Stripe from "stripe";
 import { config } from "dotenv";
 
-config();
+//loading the .env file for environmet variables
+config({ path: "./dev.env" });
+
 //add your secret key here which you will get from stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 import { v4 as uuidv4 } from "uuid";
@@ -20,7 +22,7 @@ export const paymentController = (req, res, next) => {
           {
             //multiplying amount with 100 because amount is in cents
             amount: totalPrice * 100,
-            currency: "usd",
+            currency: "eur",
             customer: customer.id,
             receipt_email: token.email,
             description: `Purchase on BookMania Shop`,

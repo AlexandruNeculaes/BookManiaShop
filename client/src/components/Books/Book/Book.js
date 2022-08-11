@@ -48,7 +48,6 @@ const Book = ({ book, setCurrentId }) => {
           title={book.title}
         />
         <div className={classes.overlay}>
-          <Typography variant="h6">{book.name}</Typography>
           <Typography variant="body2">
             {moment(book.createdAt).fromNow()}
           </Typography>
