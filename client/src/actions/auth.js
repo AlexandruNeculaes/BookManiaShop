@@ -1,4 +1,4 @@
-import { AUTH } from "../constants/actionTypes";
+import { AUTH, AUTH_ERROR } from "../constants/actionTypes";
 import * as api from "../api/index.js";
 
 //function for signin and dispatching the data to the reducers
@@ -10,7 +10,10 @@ export const signin = (formData, router) => async (dispatch) => {
 
     router.push("/");
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: AUTH_ERROR,
+      message: "Something went wrong! Please try again",
+    });
   }
 };
 
@@ -23,6 +26,9 @@ export const signup = (formData, router) => async (dispatch) => {
 
     router.push("/");
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: AUTH_ERROR,
+      message: "Something went wrong! Please try again",
+    });
   }
 };

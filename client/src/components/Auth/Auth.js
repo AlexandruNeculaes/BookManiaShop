@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Avatar,
   Button,
@@ -28,6 +28,7 @@ const initialState = {
 
 //signup and login page
 const SignUp = () => {
+  const { errors } = useSelector((state) => state.auth);
   //states
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
@@ -125,6 +126,11 @@ const SignUp = () => {
               />
             )}
           </Grid>
+          <div style={{ marginTop: "10px" }}>
+            <Typography variant="body1" component="p" color="error">
+              {errors}
+            </Typography>
+          </div>
           <Button
             type="submit"
             fullWidth

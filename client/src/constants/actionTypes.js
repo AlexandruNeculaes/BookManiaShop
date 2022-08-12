@@ -12,6 +12,7 @@ export const FETCH_BOOK = "FETCH_BOOK";
 
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";
+export const AUTH_ERROR = "AUTH_ERROR";
 
 //action types for cart
 export const ADD_TO_CART = "ADD_TO_CART";
