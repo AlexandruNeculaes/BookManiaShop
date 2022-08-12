@@ -2,9 +2,10 @@ import axios from "axios";
 
 //configurng the axios
 const API = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://book-mania-shop.herokuapp.com/",
 });
-/*https://book-mania-shop.herokuapp.com/*/
+/*https://book-mania-shop.herokuapp.com/
+http://localhost:5000*/
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
