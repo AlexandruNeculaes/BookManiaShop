@@ -7,7 +7,7 @@ import { config } from "dotenv";
 import bookRoutes from "./routes/books.js";
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
-import paymentRoutes from "./routes/payment.js";
+
 
 config({ path: "./test.env" });
 const app = express();
@@ -19,7 +19,7 @@ app.use(cors());
 app.use("/books", bookRoutes);
 app.use("/posts", postRoutes);
 app.use("/user", userRoutes);
-app.use("/payment", paymentRoutes);
+
 
 const CONNECTION_URL = process.env.DB_URL;
 

@@ -12,7 +12,7 @@ import CommentSection from "./CommentSection";
 import { getPost, getPostsBySearch } from "../../actions/posts";
 import useStyles from "./styles";
 
-//compoent for posts
+//component for posts
 const Post = () => {
   //getting the state from store
   const { post, posts, isLoading } = useSelector((state) => state.posts);
